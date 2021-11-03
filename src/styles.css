@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Kreon, sans-serif;
+    font-weight: 600;
+
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+.App {
+    overflow-x: hidden;
+}
+
+header {
+    display: flex;
+    overflow-x: hidden;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 150px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid black;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fff;
+}
+.search-container {
+    height: fit-content;
+    position: relative;
+    margin: 10 50px;
+}
+.search-container input {
+    padding: 10px 50px;
+    font-size: 1.5rem;
+    border: 3px solid black;
+    border-radius: 10px ;
+    width: 500px;
+}
+.search-container input:focus {
+    outline: none;
+}
+.search-container i {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    padding-left: 15px;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+.card {
+    width: 300px;
+    height: 350px;
+    margin: 40px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: scale(0.97);
+}
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.card .image-hover-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #dadada54;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.card .image-hover-container:hover {
+    opacity: 1;
+}
+.card .download-btn {
+    text-decoration: none;
+    background-color: #00b900e1;
+    color: #fff;
+    text-align: center;
+    border: none;
+    box-shadow: rgb(26, 26, 26) 0px 3px 8px ;
+    border-radius: 10px;
+    width: 130px;
+    padding: 8px 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+.card .download-btn:hover {
+    background-color: #009b00e1;
+}
+.download-btn i {
+    margin: 5px;
+
+}
+.prev-btn,.next-btn {
+    border: none;
+    background-color: transparent;
+    font-size: 3rem;
+    color: #27272780;
+    cursor: pointer;
+    margin: 30px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+.prev-btn {
+    left: 0;
+}
+.next-btn {
+    right: 0;
+}
+.next-btn:hover, .prev-btn:hover {
+    color: #27272742;
+}
+.err-image {
+    width: 100%;
+    height: 100%;
+}
+footer {
+    width: 100%;
+    border-top: 3px solid #000;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+footer h3 {
+    font-size: 1.5rem;
+}
+footer h3 a {
+    text-decoration: none;
+    color: #000;
+}
+footer i {
+    margin: 25px 15px;
+    font-size: 2rem;
+    color: #000;
+    transition: transform 0.3s ease;
+}
+footer i:hover {
+    transform: scale(0.95);
+}
+
+
+@media  (max-width:1100px ) and (min-width:750px) {
+    .search-container input {
+        width: 350px;
+    }
+    header img {
+        width: 350px;
+    }
+}
+
+@media (max-width:750px) {
+    :root {
+        font-size: 12px;
+    } 
+    header {
+        flex-direction: column-reverse;
+    }
+    .search-container input {
+       max-width: 300px;
+    }
+    header img {
+        width: 240px;
+        padding-bottom: 10px;
+    }
+    .card {
+        width: 270px;
+        height: 300px;
+    }
+    .card .download-btn {
+        width: 110px;
+    }
+}
