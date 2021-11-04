@@ -6,21 +6,27 @@
     font-weight: 600;
 
 }
+:root {
+    --gradient: linear-gradient(to right, #9290fc, #b8a7f7, #deaafc, #f4c8f5);
+}
 .container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 .App {
-    overflow-x: hidden;
+    overflow-x: hidden;   
+}
+.gradient {
+    background: linear-gradient(180deg, #d5bdf536,#c1a6e44b, #d3abf841,#ac93cc5e);
 }
 
 header {
     display: flex;
-    overflow-x: hidden;
+    overflow: hidden;
     justify-content: space-evenly;
     align-items: center;
-    min-height: 150px;
+    height: 150px;
     width: 100%;
     padding: 20px;
     text-align: center;
@@ -28,7 +34,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: #fff;
+    background: var(--gradient);
 }
 .search-container {
     height: fit-content;
@@ -36,6 +42,7 @@ header {
     margin: 10 50px;
 }
 .search-container input {
+    background-color: #ffffff23;
     padding: 10px 50px;
     font-size: 1.5rem;
     border: 3px solid black;
@@ -67,9 +74,11 @@ header {
     height: 350px;
     margin: 40px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding: 10px;
+    border-radius: 10px;
+    padding: 12px;
     position: relative;
     transition: transform 0.3s ease;
+    background-color: #fff;
 }
 .card:hover {
     transform: scale(0.97);
@@ -99,7 +108,7 @@ header {
 }
 .card .download-btn {
     text-decoration: none;
-    background-color: #dadadae1;
+    background-color: #fafafaec;
     color: #000;
     text-align: center;
     border: none;
@@ -114,7 +123,7 @@ header {
     transition: all 0.3s ease;
 }
 .card .download-btn:hover {
-    background-color: #acacacdc;
+    background-color: #d1cdcdee;
 }
 .card .download-btn i {
     margin-left: 5px;
@@ -129,7 +138,7 @@ header {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 2;
+    z-index: 3;
 }
 .prev-btn {
     left: 0;
@@ -140,39 +149,34 @@ header {
 .next-btn:hover, .prev-btn:hover {
     color: #27272742;
 }
-.err-image {
-    width: 100%;
-    height: 100%;
-}
 footer {
+    overflow: hidden;
     width: 100%;
+    color: #000;
     border-top: 3px solid #000;
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-}
-footer h3 {
-    font-size: 1.5rem;
+    padding-top: 20px;
+    background: var(--gradient);
 }
 footer a {
     color: #000;
 }
 footer i {
-    margin: 20px 15px;
-    font-size: 2rem;
-    color: #000;
-    transition: transform 0.3s ease;
+    margin: 20px 12px;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
 }
 footer i:hover {
     transform: scale(0.95);
+    color: #fff;
 }
-.copyright {
-    font-size: 1.2rem;
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
 }
-
 
 @media  (max-width:1100px ) and (min-width:750px) {
     .search-container input {
@@ -188,6 +192,7 @@ footer i:hover {
         font-size: 12px;
     } 
     header {
+        height: 170px;
         flex-direction: column-reverse;
     }
     .search-container input {
@@ -203,5 +208,8 @@ footer i:hover {
     }
     .card .download-btn {
         width: 90px;
+    }
+    .err-image {
+        width: 200px;
     }
 }

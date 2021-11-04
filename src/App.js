@@ -73,27 +73,30 @@ function App() {
         <Search value={query} click={clickHandler} change={changeHandler} keyPress={enterKeyHandler}/>
         <img src='images/logo.svg' alt=''/>
       </header>
-    <div className="App">
-      <button onClick={prevPage} className='prev-btn'><i className="fas fa-chevron-left"></i></button>
+    <div className={isValid ?"App gradient" : 'App'}>
+      {
+        (isValid && pageRef.current > 1) && <button onClick={prevPage} className='prev-btn'><i className="fas fa-chevron-left"></i></button>
+      }
       <div className='card-container'>
        {
          isValid?images.map((image) => {
           return (
             <Card image={image.preview} large={image.large} medium={image.medium} small={image.small} key={image.id} />
           )
-        }): <img src="images/404.jpg" alt="" className='err-image' />
+        }): <img src="images/404.svg" alt="" className='err-image' />
        }
       </div>
-      <button onClick={nextPage} className='next-btn'><i className="fas fa-chevron-right"></i></button>
+      {
+        isValid && <button onClick={nextPage} className='next-btn'><i className="fas fa-chevron-right"></i></button>
+      }
       </div>
-      <footer>
-        <h3>Made with 💖 by <a href='https://arjundev.netlify.app' target='_blank' rel='noreferrer'><strong>Arjun</strong></a></h3>
+      <footer className={isValid?'':'fixed-bottom'}>
+      <p className='copyright'>Image © <a href="https://unsplash.com" target='_blank' rel='noreferrer'>Unsplash.com</a></p>
         <div className='social-media'>
           <a href='https://www.linkedin.com/in/arjunvc' target='_blank' rel='noreferrer'><i className="fab fa-linkedin"></i></a>
           <a href='https://github.com/ArjunGTX' target='_blank' rel='noreferrer'><i className="fab fa-github"></i></a>
           <a href='https://www.twitter.com/im_arjunvc' target='_blank' rel='noreferrer'><i className="fab fa-twitter"></i></a>
         </div>
-        <p className='copyright'>Image © <a href="https://unsplash.com" target='_blank' rel='noreferrer'>Unsplash.com</a></p>
       </footer>
     </div>
   );
