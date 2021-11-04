@@ -106,7 +106,7 @@ header {
     box-shadow: rgb(26, 26, 26) 0px 3px 8px ;
     border-radius: 10px;
     width: 120px;
-    padding: 5px;
+    padding: 8px;
     font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
@@ -115,6 +115,9 @@ header {
 }
 .card .download-btn:hover {
     background-color: #acacacdc;
+}
+.card .download-btn i {
+    margin-left: 5px;
 }
 .prev-btn,.next-btn {
     border: none;
@@ -154,18 +157,20 @@ footer {
 footer h3 {
     font-size: 1.5rem;
 }
-footer h3 a {
-    text-decoration: none;
+footer a {
     color: #000;
 }
 footer i {
-    margin: 25px 15px;
+    margin: 20px 15px;
     font-size: 2rem;
     color: #000;
     transition: transform 0.3s ease;
 }
 footer i:hover {
     transform: scale(0.95);
+}
+.copyright {
+    font-size: 1.2rem;
 }
 
 
@@ -197,6 +202,6 @@ footer i:hover {
         height: 300px;
     }
     .card .download-btn {
-        width: 80px;
+        width: 90px;
     }
 }

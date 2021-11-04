@@ -7,6 +7,7 @@ function App() {
   let pageRef = useRef(1);
   const [query,setQuery] = useState('Sunset');
   const [images,setImages] = useState([]);
+  const [isValid,setValidity] = useState(false);
 
   useEffect(() => {
     getImage(query,pageRef.current)
@@ -46,17 +47,19 @@ function App() {
       .then(data => {
         if(data.total === 0) {
           setQuery('');
+          setValidity(false);
         } else {
+          setValidity(true);
           const items = data.results.map((result) => {
             return ({
               preview: result.urls.small,
               large: result.urls.full,
               medium: result.urls.regular,
-              small: result.urls.small
+              small: result.urls.small,
+              id: result.urls.full.slice(28,60)
             })
           })
           setImages(items);
-
         }
       })
       .catch(() => {
@@ -74,9 +77,9 @@ function App() {
       <button onClick={prevPage} className='prev-btn'><i className="fas fa-chevron-left"></i></button>
       <div className='card-container'>
        {
-         query?images.map((image,index) => {
+         isValid?images.map((image) => {
           return (
-            <Card image={image.preview} large={image.large} medium={image.medium} small={image.small} key={index} />
+            <Card image={image.preview} large={image.large} medium={image.medium} small={image.small} key={image.id} />
           )
         }): <img src="images/404.jpg" alt="" className='err-image' />
        }
@@ -84,12 +87,13 @@ function App() {
       <button onClick={nextPage} className='next-btn'><i className="fas fa-chevron-right"></i></button>
       </div>
       <footer>
-        <h3>Made with 💖 by <a href='https://arjundev.netlify.app'><strong>Arjun</strong></a></h3>
+        <h3>Made with 💖 by <a href='https://arjundev.netlify.app' target='_blank' rel='noreferrer'><strong>Arjun</strong></a></h3>
         <div className='social-media'>
-          <a href='https://www.linkedin.com/in/arjunvc'><i className="fab fa-linkedin"></i></a>
-          <a href='https://github.com/ArjunGTX'><i className="fab fa-github"></i></a>
-          <a href='https://www.twitter.com/im_arjunvc'><i className="fab fa-twitter"></i></a>
+          <a href='https://www.linkedin.com/in/arjunvc' target='_blank' rel='noreferrer'><i className="fab fa-linkedin"></i></a>
+          <a href='https://github.com/ArjunGTX' target='_blank' rel='noreferrer'><i className="fab fa-github"></i></a>
+          <a href='https://www.twitter.com/im_arjunvc' target='_blank' rel='noreferrer'><i className="fab fa-twitter"></i></a>
         </div>
+        <p className='copyright'>Image © <a href="https://unsplash.com" target='_blank' rel='noreferrer'>Unsplash.com</a></p>
       </footer>
     </div>
   );
