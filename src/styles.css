@@ -10,7 +10,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh;
 }
 .App {
     overflow-x: hidden;
@@ -100,14 +99,14 @@ header {
 }
 .card .download-btn {
     text-decoration: none;
-    background-color: #00b900e1;
-    color: #fff;
+    background-color: #dadadae1;
+    color: #000;
     text-align: center;
     border: none;
     box-shadow: rgb(26, 26, 26) 0px 3px 8px ;
     border-radius: 10px;
-    width: 130px;
-    padding: 8px 10px;
+    width: 120px;
+    padding: 5px;
     font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
@@ -115,11 +114,7 @@ header {
     transition: all 0.3s ease;
 }
 .card .download-btn:hover {
-    background-color: #009b00e1;
-}
-.download-btn i {
-    margin: 5px;
-
+    background-color: #acacacdc;
 }
 .prev-btn,.next-btn {
     border: none;
@@ -202,6 +197,6 @@ footer i:hover {
         height: 300px;
     }
     .card .download-btn {
-        width: 110px;
+        width: 80px;
     }
 }

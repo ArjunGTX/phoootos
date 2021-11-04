@@ -7,9 +7,9 @@ export default function Card({image,large,medium,small}) {
         <div className='card'>
             <img src={image} alt='' />
             <div className='image-hover-container'>
-                <a href={large} className='download-btn'>Large <i className="fas fa-download"></i></a>
-                <a href={medium} className='download-btn'>Medium <i className="fas fa-download"></i></a>
-                <a href={small} className='download-btn'>Small <i className="fas fa-download"></i></a>
+                <a href={large} className='download-btn'>Large</a>
+                <a href={medium} className='download-btn'>Medium</a>
+                <a href={small} className='download-btn'>Small</a>
             </div>
         </div>
     )
