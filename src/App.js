@@ -8,6 +8,7 @@ function App() {
   const [query,setQuery] = useState('Sunset');
   const [images,setImages] = useState([]);
   const [isValid,setValidity] = useState(false);
+  const [isLastPage,setIsLastPage] = useState(false);
 
   useEffect(() => {
     getImage(query,pageRef.current)
@@ -39,6 +40,16 @@ function App() {
     getImage(query,pageRef.current);
   }
 
+  function getPortfolio(social) {
+    if(social.instagram_username) {
+      return `https://www.instagram.com/${social.instagram_username}/?hl=en`;
+    } else if(social.twitter_username) {
+      return `https://www.twitter.com/${social.twitter_username}`
+    } else {
+      return '#'
+    }
+  }
+
   function getImage(query,page) {
     let baseUrl = "https://api.unsplash.com/search/photos/";
     let apiKey = 'w1vEwcdSeuPlrUWE6cXygihcELxXQfEmH8ISI8SAcS4';
@@ -48,15 +59,21 @@ function App() {
         if(data.total === 0) {
           setQuery('');
           setValidity(false);
+        } else if(page >= data.total_pages+1) {
+          setIsLastPage(true);
         } else {
           setValidity(true);
+          setIsLastPage(false);
           const items = data.results.map((result) => {
             return ({
               preview: result.urls.small,
               large: result.urls.full,
               medium: result.urls.regular,
               small: result.urls.small,
-              id: result.urls.full.slice(28,60)
+              id: result.urls.full.slice(28,60),
+              avatar: result.user.profile_image.medium,
+              userName: result.user.name,
+              portfolio: getPortfolio(result.user.social) 
             })
           })
           setImages(items);
@@ -81,13 +98,13 @@ function App() {
        {
          isValid?images.map((image) => {
           return (
-            <Card image={image.preview} large={image.large} medium={image.medium} small={image.small} key={image.id} />
+            <Card image={image.preview} large={image.large} medium={image.medium} small={image.small} key={image.id} avatar={image.avatar} userName={image.userName} portfolio={image.portfolio}/>
           )
         }): <img src="images/404.svg" alt="" className='err-image' />
        }
       </div>
       {
-        isValid && <button onClick={nextPage} className='next-btn'><i className="fas fa-chevron-right"></i></button>
+        (isValid && !isLastPage) && <button onClick={nextPage} className='next-btn'><i className="fas fa-chevron-right"></i></button>
       }
       </div>
       <footer className={isValid?'':'fixed-bottom'}>
