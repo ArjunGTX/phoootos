@@ -4,10 +4,15 @@ import Search from './components/Search';
 import Card from './components/Card';
 function App() {
 
+  //current page
   let pageRef = useRef(1);
+  //search query
   const [query,setQuery] = useState('Sunset');
+  //received images
   const [images,setImages] = useState([]);
+  //error variable for invalid query or empty response
   const [isValid,setValidity] = useState(false);
+  //is the current page last page
   const [isLastPage,setIsLastPage] = useState(false);
 
   useEffect(() => {
@@ -27,6 +32,7 @@ function App() {
     }
   }
 
+  //backward navigation
   function prevPage() {
     if(pageRef.current > 1) {
       pageRef.current--;
@@ -35,6 +41,7 @@ function App() {
     }
   }
 
+  //forward navigation
   function nextPage() {
     pageRef.current++;
     getImage(query,pageRef.current);
@@ -56,10 +63,12 @@ function App() {
     fetch(`${baseUrl}?query=${query}&client_id=${apiKey}&page=${page}&per_page=12`)
       .then(response => response.json())
       .then(data => {
+        //condition for empty image list
         if(data.total === 0) {
           setQuery('');
           setValidity(false);
-        } else if(page >= data.total_pages+1) {
+        } else if(page >= data.total_pages + 1) {
+          //condition for last page
           setIsLastPage(true);
         } else {
           setValidity(true);
@@ -90,7 +99,7 @@ function App() {
         <Search value={query} click={clickHandler} change={changeHandler} keyPress={enterKeyHandler}/>
         <img src='images/logo.svg' alt=''/>
       </header>
-    <div className={isValid ?"App gradient" : 'App'}>
+    <div className={isValid ?"App gradient" : 'App'} >
       {
         (isValid && pageRef.current > 1) && <button onClick={prevPage} className='prev-btn'><i className="fas fa-chevron-left"></i></button>
       }
