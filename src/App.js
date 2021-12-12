@@ -37,7 +37,6 @@ function App() {
     if(pageRef.current > 1) {
       pageRef.current--;
       getImage(query,pageRef.current);
-      console.log(pageRef.current);
     }
   }
 
