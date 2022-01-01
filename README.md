@@ -14,6 +14,16 @@ A photo gallery app made using React.js
 - View images in different sizes
 - Infinite Gradient Animation
 
+## Learing Outcomes
+
+- Functional Components
+- useState
+- useEffect
+- useRef
+- Error handling
+- Controlled Components
+- CSS animation
+
 ## How to use
 - Visit [phoootos.netlify.app](https://phoootos.netlify.app)
 - Enter the search query
